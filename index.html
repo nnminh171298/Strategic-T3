@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>NomiRPi3 - Welcome!</title>
+<link rel="stylesheet" type="text/css" href="game.css">
+<link rel="stylesheet" href="w3.css">
+<script type="text/javascript" src="game.js"></script>
+</head>
+<body>
+<div class="bg">
+	<div class="w3-col s12 m12 l3 w3-container w3-center">
+		<h1>Let's play a game!</h1>
+		<div class="w3-col s12 m3 l3 w3-pad big small">
+			<button class="w3-btn w3-back red hred w3-round w3-border w3-border-red button w3-col" id="1st" onclick="com_first()">Com X</button>
+		</div>
+		<div class="w3-col s12 m3 l3 w3-pad big small">
+		<button class="w3-btn w3-back blue hblue w3-round w3-border w3-border-blue button w3-col" id="2nd" onclick="com_second()">Com O</button>
+		</div>
+		<div class="w3-col s12 m3 l3 w3-pad big small">
+		<button class="w3-btn w3-back black hblack w3-round w3-border w3-border-black button w3-col" id="auto" onclick="automatic()">Auto</button>
+		</div>
+		<div class="w3-col s12 m3 l3 w3-pad big small">
+		<button class="w3-btn w3-back green hgreen w3-round w3-border w3-border-green button w3-col" onclick="prompt_reset()">Reset</button>
+		</div>
+		<br><br><p id="result"><b>>> Cross turn <<</b></p>
+		<div class="w3-hide-medium">
+			<p><br>Another game I made: &nbsp;
+			<a href="http://88.113.35.240/nim" target="_blank">Nim Game</a></p>
+		</div>
+		
+	</div>
+    <div class="w3-col s12 m12 l5 w3-container w3-center">
+		<h1>Strategic tic tac toe</h1>
+		<table>
+			<tr class="top">
+				<th class="th_left"></th>
+				<th class="th_left">A</th>
+				<th>B</th>
+				<th>C</th>
+				<th class="th_left">D</th>
+				<th>E</th>
+				<th>F</th>
+				<th class="th_left">G</th>
+				<th>H</th>
+				<th class="th_right">I</th>
+			</tr>
+			<tr class="top">
+				<th class="th_left">1</th>
+				<td id="11" onclick="checkTurn(this.id)" class="td_left">	<img id="11i" src="blank.png"></td>
+				<td id="12" onclick="checkTurn(this.id)">					<img id="12i" src="blank.png"></td>
+				<td id="13" onclick="checkTurn(this.id)">					<img id="13i" src="blank.png"></td>
+				<td id="21" onclick="checkTurn(this.id)" class="td_left">	<img id="21i" src="blank.png"></td>
+				<td id="22" onclick="checkTurn(this.id)">					<img id="22i" src="blank.png"></td>
+				<td id="23" onclick="checkTurn(this.id)">					<img id="23i" src="blank.png"></td>
+				<td id="31" onclick="checkTurn(this.id)" class="td_left">	<img id="31i" src="blank.png"></td>
+				<td id="32" onclick="checkTurn(this.id)">					<img id="32i" src="blank.png"></td>
+				<td id="33" onclick="checkTurn(this.id)" class="td_right">	<img id="33i" src="blank.png"></td>
+			</tr>
+			<tr>
+				<th class="th_left">2</th>
+				<td id="14" onclick="checkTurn(this.id)" class="td_left">	<img id="14i" src="blank.png"></td>
+				<td id="15" onclick="checkTurn(this.id)">					<img id="15i" src="blank.png"></td>
+				<td id="16" onclick="checkTurn(this.id)">					<img id="16i" src="blank.png"></td>
+				<td id="24" onclick="checkTurn(this.id)" class="td_left">	<img id="24i" src="blank.png"></td>
+				<td id="25" onclick="checkTurn(this.id)">					<img id="25i" src="blank.png"></td>
+				<td id="26" onclick="checkTurn(this.id)">					<img id="26i" src="blank.png"></td>
+				<td id="34" onclick="checkTurn(this.id)" class="td_left">	<img id="34i" src="blank.png"></td>
+				<td id="35" onclick="checkTurn(this.id)">					<img id="35i" src="blank.png"></td>
+				<td id="36" onclick="checkTurn(this.id)" class="td_right">	<img id="36i" src="blank.png"></td>
+			</tr>
+			<tr>
+				<th class="th_left">3</th>
+				<td id="17" onclick="checkTurn(this.id)" class="td_left">	<img id="17i" src="blank.png"></td>
+				<td id="18" onclick="checkTurn(this.id)">					<img id="18i" src="blank.png"></td>
+				<td id="19" onclick="checkTurn(this.id)">					<img id="19i" src="blank.png"></td>
+				<td id="27" onclick="checkTurn(this.id)" class="td_left">	<img id="27i" src="blank.png"></td>
+				<td id="28" onclick="checkTurn(this.id)">					<img id="28i" src="blank.png"></td>
+				<td id="29" onclick="checkTurn(this.id)">					<img id="29i" src="blank.png"></td>
+				<td id="37" onclick="checkTurn(this.id)" class="td_left">	<img id="37i" src="blank.png"></td>
+				<td id="38" onclick="checkTurn(this.id)">					<img id="38i" src="blank.png"></td>
+				<td id="39" onclick="checkTurn(this.id)" class="td_right">	<img id="39i" src="blank.png"></td>
+			</tr>
+			<tr class="top">
+				<th class="th_left">4</th>
+				<td id="41" onclick="checkTurn(this.id)" class="td_left">	<img id="41i" src="blank.png"></td>
+				<td id="42" onclick="checkTurn(this.id)">					<img id="42i" src="blank.png"></td>
+				<td id="43" onclick="checkTurn(this.id)">					<img id="43i" src="blank.png"></td>
+				<td id="51" onclick="checkTurn(this.id)" class="td_left">	<img id="51i" src="blank.png"></td>
+				<td id="52" onclick="checkTurn(this.id)">					<img id="52i" src="blank.png"></td>
+				<td id="53" onclick="checkTurn(this.id)">					<img id="53i" src="blank.png"></td>
+				<td id="61" onclick="checkTurn(this.id)" class="td_left">	<img id="61i" src="blank.png"></td>
+				<td id="62" onclick="checkTurn(this.id)">					<img id="62i" src="blank.png"></td>
+				<td id="63" onclick="checkTurn(this.id)" class="td_right">	<img id="63i" src="blank.png"></td>
+			</tr>
+			<tr>
+				<th class="th_left">5</th>
+				<td id="44" onclick="checkTurn(this.id)" class="td_left">	<img id="44i" src="blank.png"></td>
+				<td id="45" onclick="checkTurn(this.id)">					<img id="45i" src="blank.png"></td>
+				<td id="46" onclick="checkTurn(this.id)">					<img id="46i" src="blank.png"></td>
+				<td id="54" onclick="checkTurn(this.id)" class="td_left">	<img id="54i" src="blank.png"></td>
+				<td id="55" onclick="checkTurn(this.id)">					<img id="55i" src="blank.png"></td>
+				<td id="56" onclick="checkTurn(this.id)">					<img id="56i" src="blank.png"></td>
+				<td id="64" onclick="checkTurn(this.id)" class="td_left">	<img id="64i" src="blank.png"></td>
+				<td id="65" onclick="checkTurn(this.id)">					<img id="65i" src="blank.png"></td>
+				<td id="66" onclick="checkTurn(this.id)" class="td_right">	<img id="66i" src="blank.png"></td>
+			</tr>
+			<tr>
+				<th class="th_left">6</th>
+				<td id="47" onclick="checkTurn(this.id)" class="td_left">	<img id="47i" src="blank.png"></td>
+				<td id="48" onclick="checkTurn(this.id)">					<img id="48i" src="blank.png"></td>
+				<td id="49" onclick="checkTurn(this.id)">					<img id="49i" src="blank.png"></td>
+				<td id="57" onclick="checkTurn(this.id)" class="td_left">	<img id="57i" src="blank.png"></td>
+				<td id="58" onclick="checkTurn(this.id)">					<img id="58i" src="blank.png"></td>
+				<td id="59" onclick="checkTurn(this.id)">					<img id="59i" src="blank.png"></td>
+				<td id="67" onclick="checkTurn(this.id)" class="td_left">	<img id="67i" src="blank.png"></td>
+				<td id="68" onclick="checkTurn(this.id)">					<img id="68i" src="blank.png"></td>
+				<td id="69" onclick="checkTurn(this.id)" class="td_right">	<img id="69i" src="blank.png"></td>
+			</tr>
+			<tr class="top">
+				<th class="th_left">7</th>
+				<td id="71" onclick="checkTurn(this.id)" class="td_left">	<img id="71i" src="blank.png"></td>
+				<td id="72" onclick="checkTurn(this.id)">					<img id="72i" src="blank.png"></td>
+				<td id="73" onclick="checkTurn(this.id)">					<img id="73i" src="blank.png"></td>
+				<td id="81" onclick="checkTurn(this.id)" class="td_left">	<img id="81i" src="blank.png"></td>
+				<td id="82" onclick="checkTurn(this.id)">					<img id="82i" src="blank.png"></td>
+				<td id="83" onclick="checkTurn(this.id)">					<img id="83i" src="blank.png"></td>
+				<td id="91" onclick="checkTurn(this.id)" class="td_left">	<img id="91i" src="blank.png"></td>
+				<td id="92" onclick="checkTurn(this.id)">					<img id="92i" src="blank.png"></td>
+				<td id="93" onclick="checkTurn(this.id)" class="td_right">	<img id="93i" src="blank.png"></td>
+			</tr>
+			<tr>
+				<th class="th_left">8</th>
+				<td id="74" onclick="checkTurn(this.id)" class="td_left">	<img id="74i" src="blank.png"></td>
+				<td id="75" onclick="checkTurn(this.id)">					<img id="75i" src="blank.png"></td>
+				<td id="76" onclick="checkTurn(this.id)">					<img id="76i" src="blank.png"></td>
+				<td id="84" onclick="checkTurn(this.id)" class="td_left">	<img id="84i" src="blank.png"></td>
+				<td id="85" onclick="checkTurn(this.id)">					<img id="85i" src="blank.png"></td>
+				<td id="86" onclick="checkTurn(this.id)">					<img id="86i" src="blank.png"></td>
+				<td id="94" onclick="checkTurn(this.id)" class="td_left">	<img id="94i" src="blank.png"></td>
+				<td id="95" onclick="checkTurn(this.id)">					<img id="95i" src="blank.png"></td>
+				<td id="96" onclick="checkTurn(this.id)" class="td_right">	<img id="96i" src="blank.png"></td>
+			</tr>
+			<tr class="bottom">
+				<th class="th_left">9</th>
+				<td id="77" onclick="checkTurn(this.id)" class="td_left">	<img id="77i" src="blank.png"></td>
+				<td id="78" onclick="checkTurn(this.id)">					<img id="78i" src="blank.png"></td>
+				<td id="79" onclick="checkTurn(this.id)">					<img id="79i" src="blank.png"></td>
+				<td id="87" onclick="checkTurn(this.id)" class="td_left">	<img id="87i" src="blank.png"></td>
+				<td id="88" onclick="checkTurn(this.id)">					<img id="88i" src="blank.png"></td>
+				<td id="89" onclick="checkTurn(this.id)">					<img id="89i" src="blank.png"></td>
+				<td id="97" onclick="checkTurn(this.id)" class="td_left">	<img id="97i" src="blank.png"></td>
+				<td id="98" onclick="checkTurn(this.id)">					<img id="98i" src="blank.png"></td>
+				<td id="99" onclick="checkTurn(this.id)" class="td_right">	<img id="99i" src="blank.png"></td>
+			</tr>
+		</table><br><br>
+	</div>
+	<div class="w3-col s12 m12 l4 w3-container w3-center">
+		<h1>Rules</h1>
+		<p class="jus">(Choose ComX or ComO to play with the computer)</p>
+		<p class="jus">X goes first and can play anywhere on the global board.</p>
+		<p class="jus">The relative location of the last move on the local board (3x3 board) is the relative location on the global (9x9 board) of the next move.</p>
+		<p class="jus">If a move is played so that it is to win a local board by the rules of normal tic-tac-toe then it wins that local board.</p>
+		<p class="jus">Once the outcome of a local board is decided (win or draw) no more moves may be played in that board.</p>
+		<p class="jus">If a player is sent to such a board, then that player may play in any other board.</p>
+		<p class="jus">Game play ends when either a player wins the global board or there are no legal moves remaining.</p>
+		<p class="jus">By then, whoever wins more local boards wins the game.</p><br><br>
+		<a	href="http://www.freepik.com/free-vector/abstract-blue-background_858016.htm"
+			target="_blank"
+			class="float">Background designed by Kjpargeter/Freepik</a>
+	</div>
+
+</div>
+</body>
+</html>
